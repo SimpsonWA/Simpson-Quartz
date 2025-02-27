@@ -32,7 +32,7 @@ $$\nabla f(x_{n-1}) \equiv \nabla f(x_n) + \nabla^2 f(x_n) (x_{n-1} - x_n)$$
 
 Define vectors:
 
-$s_{n-1} = x_n - x_{n-1}$ and $y_{n-1} = \\nabla f(x_n) - \\nabla f(x_{n-1})$
+$s_{n-1} = x_n - x_{n-1}$ and $y_{n-1} = \nabla f(x_n) - \nabla f(x_{n-1})$
 
 We have an approximation that the true Hessian satisfies: $\nabla^2 f(x_n) s_{n-1} \approx y_{n-1}$. This leads to the secant equation, which we can require an approximation $B_n$ to satisfy:
 
@@ -177,4 +177,4 @@ $$
 \|\nabla f(x) - \nabla f(x^*)\|_2 \leq L \|x - x^*\|_2 \quad \forall x
 $$
 
-Then $x_k \to x^*$ superlinearly. That is $\\|x_{k+1} - x^*\\|_2 = o(\\|x_k - x^*\\|_2)$.
+Then $x_k \to x^*$ superlinearly. That is $\|x_{k+1} - x^*\|_2 = o(\|x_k - x^*\|_2)$.
