@@ -15,7 +15,7 @@ $$
 
 - The denominator is an approximation of $f'(x_k)$ (but is formed only using first order info). This is Newton-like, but the Secant method is called Quasi-Newton method.
 
-## Generalizing Secant method for $ n > 1 $
+## Generalizing Secant method for $n > 1$
 
 - Quasi-Newton methods involve iterations of the form:
 

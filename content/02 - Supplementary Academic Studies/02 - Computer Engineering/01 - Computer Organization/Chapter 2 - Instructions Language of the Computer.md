@@ -72,7 +72,7 @@ add x20, x21, x9 // g = h + A[8]
 In many architectures, words must start at addresses that are multiples of 4 and doublewords must start at addresses that are multiples of 8. This requirement is called an **alignment restriction**.
 
 Example: Compiling using load and store:
-- Assume we have a variable `h` which is at register `x21` and teh base address of the array `A` is `x22` :
+- Assume we have a variable `h` which is at register `x21` and the base address of the array `A` is `x22` :
 ```c
 A[12] = h + A[8];
 ```
@@ -85,7 +85,7 @@ sdx9, 96(x22) // Stores h+A[8] back into A[12]
 - So using 96 ($8 \times 12$) as the offset and register `x22` as the base register
 - We also use the first 64 as ($8 \times 8$). Since the register is broken up into 8 bits so if we wanted to access which ever register location we would do ($loc \times 8$)
 
-Commonly programs have more variables than registers so teh compiler tries to keep the most frequently used variables in registers and less frequently used variables in memory this is called **spilling** registers. 
+Commonly programs have more variables than registers so the compiler tries to keep the most frequently used variables in registers and less frequently used variables in memory this is called **spilling** registers. 
 
 Thus, registers take less time to access and have higher throughput than memory, making data in registers both considerably faster to access and simpler to use. Accessing registers also uses much less energy than accessing memory.
 
@@ -168,7 +168,7 @@ A[30] = h + A[30] + 1;
 In RISC-V Assembly langauge this would look like:
 ```assembly
 ld x9, 240(x10) //temp reg x9 gets A[30]
-add x9, x21, x9 // temp reg x9 gets h_A[30]
+add x9, x21, x9 // temp reg x9 gets h+A[30]
 addi x9, x9, 1 // temp reg x9 now has h + A[30] + 1
 sd x9, 240(x10) // Stores h+A[30]+1 back into A[30]
 ```
@@ -304,25 +304,111 @@ To support the return from a procedure RISC-V uses a jump and link return instru
 jalr x1, 0(x1)
 ```
 The jump and link register instruction branches to the address stored in the register `x1`.
-Thus the calling program or **caller** puts the parameter values in `x10-x17` and uses `jal x1, x` to branch to procedure `x` which is the **callee**. The callee then perfroms the calculations and places the results in the same parameter registers and returns coontrol to teh caller that is using `jalr x0, 0(x1)`
+Thus the calling program or **caller** puts the parameter values in `x10-x17` and uses `jal x1, x` to branch to procedure `x` which is the **callee**. The callee then performs the calculations and places the results in the same parameter registers and returns control to the caller that is using `jalr x0, 0(x1)`
 
-**caller**: the program which instiages a procedure and provides the necessarty parameter values
-**callee**: a procedure that executes a series of stored instructions based on parameters provided by the caller and tehn returns control to the caller. 
+**caller**: the program which instigates a procedure and provides the necessary parameter values
+**callee**: a procedure that executes a series of stored instructions based on parameters provided by the caller and then returns control to the caller. 
 
 **Program counter (PC)**: The register containing the address of the instructions in the program being executed
 
 ## Using More Registers
 
 Suppose we need more registers for a procedure than the eight argument registers. This means we need to spill register to memory. 
-The ideal data structure for spilling registers is a **stack** (LIFO). A stack needs a pointer to the most recently allocated address in the stack to show where the next proceudre should place the register to be spilled or where ol register values are found. In RISC-V the **stack pointer** is register `x2` also known as `sp`
+The ideal data structure for spilling registers is a **stack** (LIFO). A stack needs a pointer to the most recently allocated address in the stack to show where the next procedure should place the register to be spilled or where ol register values are found. In RISC-V the **stack pointer** is register `x2` also known as `sp`
 
 **Stack**: A data structure for spilling registers organized as last-in first out queue
 **Stack Pointer**: A value denoting the most recently allocated address in a stack that shows where registers should be spilled or where old register values can be found
 
-**Compiling a C Procedure that doesnt call another procedure**:
-- PG 222
+**Compiling a C Procedure that doesn't call another procedure**:
+```c
+long long int leaf_example (long long int g, long long int h, long long int i, long long int j)
+{
+	long long int f;
+	f = (g + h) − (i + j);
+	return f;
+}
+```
+ Here we are going to say that the variables `g,h,i,j,f` correspond to register `x10,x11,x12,x13,x20` respectively. 
+We need to save three registers (2 temp) as `x5,x6,x20`. We push the old values onto the stack by creating space for three doublewords on the stack then store them
+``` assembly
+addi sp, sp, -24 // adjust stack to make froom for 3 items
+sdx5, 16(sp) //save register x5 for use afterwards
+sdx6, 8(sp) // save register x6 for use afterwards
+sdx20, 0(sp) // save register x20 for use afterwards
+```
 
+These instructions correspond to teh body of the procedure:
+```assembly
+add x5, x10 , x11 // register x5 contains g+h
+add x6, x12, x13 // register x6 contains i+j
+sub x20, x5,x6 // f = x5-x6 which is (g+h) - (i+j)
+```
 
+To then retunr the value of `f` we copy it ito a parameter register:
+```assembly
+addi x10, x20, 0 // returns f (x10 = x20 + 0)
+```
+Before returning, we restore the three old values of the registers we saved by “popping” them from the stack:
+```assembly
+ld x20, 0(sp) // restore register x20 for caller
+ld x6, 8(sp) // restore register x6 for caller
+ld x5, 16(sp) // restore register x5 for caller
+addi sp, sp , 24 //adjust stack to delete 3 times
+```
+Then the procedure will end with a branch register using the return address:
+```assembly
+jalr x0, 0(x1) // branch back to calling routine  
+```
 
+So really in this example we are using temp registers with the assumption that the old values must be saved and restored.
+To avoid saving and restoring a register whose value is never used RISC-V software seperates 19 of the registers into 2 groupd:
+1. `x5-x7` and `x28-x31`: temp registers that are not perserved by the callee on a procedure call
+2. `x8 - x9` and `x18-x27`: save registers that must preserve on a procedure call 
+
+So in the example above, since the caller does not expect registers `x5` and `x6` to be preserved across a procedure call, we can drop two stores and two loads from the code. We still must save and restore `x20`, since the callee must assume that the caller needs its value.
+
+## Nested Procedures 
+
+**Leaf Procedure**: a procedure that does not call other procedures
+
+Using an example of a recursive procedure:
+```c
+long long int fact (long long int n)
+{
+	if (n < 1) return (1);
+	else return (n * fact(n −1));
+}
+```
+Here the variable `n` will correspond to the register `x10`. 
+```assembly
+fact:
+    addi sp, sp, -16     # Adjust stack for 2 items
+    sd x1, 8(sp)         # Save the return address
+    sd x10, 0(sp)        # Save argument n
+
+    addi x5, x10, -1     # x5 = n - 1
+    bge x5, x0, L1       # if (n-1) >= 0, goto L1
+
+    # Base case: return 1
+    addi x10, x0, 1      # x10 = 1
+    addi sp, sp, 16      # Restore stack pointer
+    jalr x0, 0(x1)       # Return to caller
+
+L1:
+    addi x10, x10, -1    # n >= 1: pass (n-1) as argument
+    jal fact             # Recursive call to fact(n-1)
+
+    mv x6, x10           # Move result of fact(n-1) to x6
+    ld x10, 0(sp)        # Restore original argument n
+    ld x1, 8(sp)         # Restore return address
+    addi sp, sp, 16      # Restore stack pointer
+
+    mul x10, x10, x6     # Compute n * fact(n-1)
+    jalr x0, 0(x1)       # Return to caller
+
+```
+
+## Allocating Space for New Data on The Stack
+- PG227 
 # Notecards
 #ComputerOrganizationNotecards
