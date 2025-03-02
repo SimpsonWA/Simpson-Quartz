@@ -1,12 +1,13 @@
 
-| Lecture                                                                                                      | Topics |
-| ------------------------------------------------------------------------------------------------------------ | ------ |
-| [[content/01 - M.S Robotics Courses/Spring 2025/EENG 521 - Numerical Optimization/Lecture 1 - Introduction]] |        |
-| [[Lecture 3 - Calculus Review]]                                                                              |        |
-| [[Lecture 4 - Optimality Conditions for Unconstrained Optimization]]                                         |        |
-| [[Lecture 5 - Gradient Descent]]                                                                             |        |
-| [[Lecture 6 - Line Search Methods]]                                                                          |        |
-| [[Lecture 7 Conjugate Gradient Search Method]]                                                               |        |
-| [[Lecture 8 - Newton's Method]]                                                                              |        |
-| [[Lecture 9 - Quasi Newton Methods]]                                                                         |        |
+| Lecture                                                              | Topics                                                                                                                        |
+| -------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Temp                                                                 |                                                                                                                               |
+| [[Lecture 3 - Calculus Review]]                                      | [[Gradient]] ,[[Hessian]] ,[[Jacobian]] ,[[L-Smooth]] ,[[Taylor's Theorem]]                                                   |
+| [[Lecture 4 - Optimality Conditions for Unconstrained Optimization]] | [[Global Minimizer]] ,[[Strict Global Minimizer]] ,[[Local Minimizer]] ,[[Strict Local Minimizer]] ,[[Optimality Conditions]] |
+| [[Lecture 5 - Gradient Descent]]                                     | [[Descent Direction]] ,[[Gradient Descent]] ,                                                                                 |
+| [[Lecture 6 - Line Search Methods]]                                  | [[Descent Direction]] ,[[Line Search Method]] ,[[Wolfe Conditions]]                                                           |
+| [[Lecture 7 Conjugate Gradient Search Method]]                       | [[Linear Conjugate Gradient]]                                                                                                 |
+| [[Lecture 8 - Newton's Method]]                                      | [[Newtons Method]], [[Line Search Method]]                                                                                    |
+| [[Lecture 9 - Quasi Newton Methods]]                                 | [[Quasi Newton Method]], [[DFP Update]], [[BFGS]]                                                                             |
+| [[Lecture 10 - Large Scale Unconstrained Optimization]]              | [[Limited Memory BFGS]]                                                                                                       |
 

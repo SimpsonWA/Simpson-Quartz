@@ -26,16 +26,24 @@ $$\lim_{y \to 0} \frac{f(x+y) - f(x) - g^T y}{||y||} = 0$$
 
 ### Gradient:
 - If $f$ is differentiable at $x$, we call the corresponding $g$ vector the gradient of $f$ at $x$. It is denoted as $\nabla f(x) \in \mathbb{R}^n$ and given by:
+
 $$\nabla f(x) = \begin{pmatrix} \frac{\partial f}{\partial x_1} \\ \frac{\partial f}{\partial x_2} \\ \vdots \\ \frac{\partial f}{\partial x_n} \end{pmatrix} \in \mathbb{R}^n$$
 
 ### Jacobian:
 - Now we say $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$ be a vector field. We want to find a matrix $J \in \mathbb{R}^{m \times n}$ such that:
+
 $$\lim_{y \to 0} \frac{||f(x+y) - f(x) - Jy||}{||y||} = 0$$
+
 - We say this matrix $J$ is:
-$$\nabla f(x) = J(x)^T = \begin{pmatrix}
+
+$$
+\nabla f(x) = J(x)^T = \begin{pmatrix}
 \nabla f_1(x) & \nabla f_2(x) & \cdots & \nabla f_m(x) \\
 \vdots & \vdots & \ddots & \vdots \\
-\end{pmatrix} \in \mathbb{R}^{n \times m}$$
+\end{pmatrix} \in \mathbb{R}^{n \times m}
+$$
+
+
 ### Hessian
 
 We denote the Hessian of $f: \mathbb{R}^n \rightarrow \mathbb{R}$ at $x$ as:
@@ -61,7 +69,6 @@ $$
 Given differentiable functions $h: \mathbb{R}^n \rightarrow \mathbb{R}^m$ and $g: \mathbb{R}^m \rightarrow \mathbb{R}$, the gradient of $f(x) = g(h(x)) : \mathbb{R}^n \rightarrow \mathbb{R}$ is given by:
 
 
-
 $$ 
 \nabla f(x) = \sum_{i=1}^m \frac{\partial g}{\partial z_i} \nabla h_i(x) = \nabla h(x) \nabla g(h(x))
 $$
@@ -71,9 +78,9 @@ $$
 - Taylor's theorem shows how smooth functions can be approximated locally by low-order functions.
 - **Theorem 1**: Given a continuously differentiable ($C^1$) function $f: \mathbb{R}^n \rightarrow \mathbb{R}$ and $x, p \in \mathbb{R}^n$, we have:
 
-$$\[ 
+$$
 f(x + p) = f(x) + \nabla f(x + \epsilon p)^T p \quad \text{for some} \quad \epsilon \in (0, 1)
-\]
+
 $$
 
 - **Theorem 2**: Given a twice differentiable ($C^2$) function $f: \mathbb{R}^n \to \mathbb{R}$ and $x, p \in \mathbb{R}^n$, we have:
@@ -116,4 +123,4 @@ $$
 \lambda_{\max} (\nabla^2 f(x)) \leq L \quad \text{for all } x
 $$
 
----
+
