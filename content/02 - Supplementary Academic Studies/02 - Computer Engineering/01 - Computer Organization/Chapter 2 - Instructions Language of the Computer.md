@@ -409,6 +409,94 @@ L1:
 ```
 
 ## Allocating Space for New Data on The Stack
-- PG227 
-# Notecards
-#ComputerOrganizationNotecards
+
+**Procedure Frame**: The segment of the stack containing a procedure's saved registers and local variables
+
+Some RISC-V compilers use a **frame pointer** (`fp`,`x8`) to point to teh first doubleword of teh frame of a procedure
+
+## Allocating Space for New Data on the Heap
+
+The segment for data structures that grow and shrink during their lifetimes is called the **heap**
+
+**Text Segment**: The segment of a UNIX object file that contains the machine language code for routines in the source file. 
+
+- Come back here I think my eyes glazed over and I really didnt pull anything from this section
+
+# 2.9 Communicating with People
+
+RISC-V provides instructions to move bytes there is the;
+- load byte `lbu`: which loads a byte from memory placing it in the 8 bits of the rightmost register
+- store byte `sb`: takes a byte from the rightmost 8 bits of a register and writes it to memory 
+
+Example **Compiling a string copy proceduer**:
+The procedure `strcpy` copies string `y` to string `x` using the null byte
+termination convention of C:
+```c
+void strcpy(char x[], char y[]){
+	size_t i;
+	i = 0;
+	while((x[i] = y[i]) != '\0') //copt and test byte
+	i+=1;
+}
+```
+
+Assuming that the base addresses of `x,y` are `x10,x11` and `i` is in register `x19` then the assmbly for this procedure would look like:
+```assembly
+strcpy:
+    addi sp, sp, -8     # Adjust stack for 1 item
+    sd x19, 0(sp)        # Save x19 on stack
+    add x19, x0, x0      # i = 0
+
+L1: add x5, x11, x19     # Address of y[i] in x5
+    lbu x6, 0(x5)        # x6 = y[i]
+    add x7, x10, x19     # Address of x[i] in x7
+    sb x6, 0(x7)         # x[i] = y[i]
+    beq x6, x0, L2       # If y[i] == '\0', exit loop
+    addi x19, x19, 1     # i = i + 1
+    jal x0, L1           # Jump back to L1
+
+L2: ld x19, 0(sp)        # Restore x19
+    addi sp, sp, 16      # Restore stack pointer
+    ret                  # Return
+
+```
+
+# 2.10 RISC-V Addressing for Wide Immediates and Addresses 
+
+This section goes over the general solution for large constants and then shows optimizations for instruction addresses used in branches
+
+## Wide Immediate Operands
+
+RISC-V offers an instruction called the *Load upper immediate* (`lui`) to load a 20 bit constant into bits 12-31 of a register
+
+## Addressing in Branches
+
+The branch instructions use a **SB-type** format where there is a 
+- 7 bit optcode
+- 3 bit function code
+- two 5 bit register operands (rs1 and rs2 )
+- and a 12 bit address immediate
+![[SB-Type Instruction.png]]
+Though the only branch that doesnt follow this convention is the `jal` (jump and link) instruction. 
+Instead the `jal` uses a **UJ-type** format which consist of 
+- 7 bit opcode
+- 5 bit destination register operand (rd)
+- 20 bit address immediate
+![[jal Instruction.png]]
+
+If addresses of the program had to fit in this 20-bit field, it would mean that no program could be bigger than $2^{20}$, which is far too small to be a realistic option today.
+
+So an alternative is to specify a register that would always be added to the brnach offset such as:
+$$
+\text{Program Counter = Register + Branch Offset}
+$$
+This sum allows the program to be as large as $2^{64}$ and still be able to use conditional branches
+
+**PC-relative addressing**: An addressing regime in which the address is the sum of the program counter and a constant in the instruction
+
+![[Addressing.png]]
+# 2.11 Parallelism and Instructions: Synchronization
+
+**Data Race**: Two memory accesses from a data race if they are from different threads to the same location, at least one is a write and they occur one after another
+
+- Top of page 251
