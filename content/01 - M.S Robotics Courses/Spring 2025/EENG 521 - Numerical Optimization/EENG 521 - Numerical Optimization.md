@@ -10,4 +10,5 @@
 | [[Lecture 8 - Newton's Method]]                                      | [[Newtons Method]], [[Line Search Method]]                                                                                    |
 | [[Lecture 9 - Quasi Newton Methods]]                                 | [[Quasi Newton Method]], [[DFP Update]], [[BFGS]]                                                                             |
 | [[Lecture 10 - Large Scale Unconstrained Optimization]]              | [[Limited Memory BFGS]]                                                                                                       |
+| [[Lecture 11 - Least Squares]]                                       | [[Least Squares]]                                                                                                             |
 

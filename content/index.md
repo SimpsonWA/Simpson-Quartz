@@ -26,5 +26,7 @@ My goal is for this site to be a kind of "second brain" for me, and hopefully, a
 - [[The C++ Programming Language]]
 ## Computer Engineering
 - [[Computer Organization]]
-## Math
-- TEMP
+## Robotics
+- [[Probabilistic Robotics]]
+- [[Planning Algorithms]]
+

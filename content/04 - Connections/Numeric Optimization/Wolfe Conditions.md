@@ -1,11 +1,33 @@
 
-- **1st criterion of favorable step size** (Armijo condition - sufficient decrease):
+# Armijo Condition (Sufficient Decrease) :
+
 
 $$f(x_k + \alpha p_k) \leq f(x_k) + \alpha c_1 \nabla f(x_k)^T p_k \quad \text{for some} \quad c_1 \in (0, 1)$$
 
 - Essentially, the new step $f(x_k + \alpha p_k)$ should be below the line of $\Phi(\alpha)$.
 
-- **Condition 2 (curvature condition):**
+![[SufficentDecrease.png]]
+
+**Armijo Backtracking Algorithm**: 
+
+```pseudo
+	\begin{algorithm}
+	\caption{Backtracking Algorithm}
+	\begin{algorithmic}
+	  \Procedure{Backtracking}{$A, p, r$}
+	    \State Choose $\bar{\alpha} > 0$, $\rho \in (0,1)$, $c_1 \in (0,1)$
+	    \State Set $\alpha \leftarrow \bar{\alpha}$
+	    \While{$f(x_k + \alpha p_k) > f(x_k) + \alpha c_1 \nabla f(x_k)^T p_k$}
+	      \State $\alpha \leftarrow \rho \alpha$
+	    \EndWhile
+	    \Return $\alpha_k = \alpha$
+	  \EndProcedure
+	\end{algorithmic}
+	\end{algorithm}
+
+```
+
+# Curvature Condition:
 
 $$\nabla f(x_k + \alpha p_k)^T p_k \geq c_2 \nabla f(x_k)^T p_k \quad \text{for some} \quad c_2 \in (c_1, 1), \quad c_2 \sim 0.1 \rightarrow 0.9$$
 
@@ -25,8 +47,9 @@ $$
 $$
 
 - with $0 < c_1 < c_2 < 1$.
+![[Curvature Condition.png]]
 
-- **Strong Wolfe conditions** modify (2):
+# Strong Wolfe conditions:
 
 $$
 |\nabla f(x_k + \alpha_k p_k)^T p_k| \leq c_2 |\nabla f(x_k)^T p_k| \tag{3}

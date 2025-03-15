@@ -1,22 +1,22 @@
 
-| Lecture                                                       | Topics |
-| ------------------------------------------------------------- | ------ |
-| [[Lecture 3 - Metric Spaces]]                                 |        |
-| [[Lecture 4 - Vector Space Concepts]]                         |        |
-| [[Lecture 5 - Normed Linear Spaces]]                          |        |
-| [[Lecture 6 - Properties of Inner Product Spaces]]            |        |
-| [[Lecture 7 - Orthogonality and Projection]]                  |        |
-| [[Lecture 8 - Gram Schmidt]]                                  |        |
-| [[Lecture 9 - Orthobasis Expansion]]                          |        |
-| [[Lecture 11 - Linear Operations Basic Ideas]]                |        |
-| [[Lecture 12 - Inverses and Adjoints]]                        |        |
-| [[Lecture 13 - Fundamental Subspaces of a Linear Operator]]   |        |
-| [[Lecture 14 - Pseudoinverses]]                               |        |
-| [[Lecture 15 - Ax=y Basic Ideas]]                             |        |
-| [[Lecture 16 - Least Squares]]                                |        |
-| [[Lecture 17 - Matrix Condition Number]]                      |        |
-| [[Lecture 18 - Matrix Factorization]]                         |        |
-| [[Lecture 19 - Eigenanalysis Motivations]]                    |        |
-| [[Lecture 20 - Eigenanalysis Properties and Transformations]] |        |
-| [[Lecture 21 - Eigenanalysis - PCA]]                          |        |
+| Lecture                                                       | Topics                                                                                                     |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| [[Lecture 3 - Metric Spaces]]                                 | [[Metric Space]]                                                                                           |
+| [[Lecture 4 - Vector Space Concepts]]                         | [[Vector Space]] [[Linear Subspace]] [[Linear Combination]] [[Linear Dependence]]  [[Linear Independence]] |
+| [[Lecture 5 - Normed Linear Spaces]]                          |                                                                                                            |
+| [[Lecture 6 - Properties of Inner Product Spaces]]            |                                                                                                            |
+| [[Lecture 7 - Orthogonality and Projection]]                  |                                                                                                            |
+| [[Lecture 8 - Gram Schmidt]]                                  | [[Gram Schmidt]]                                                                                           |
+| [[Lecture 9 - Orthobasis Expansion]]                          | [[Orthobasis]]                                                                                             |
+| [[Lecture 11 - Linear Operations Basic Ideas]]                | [[Linear Operator]]                                                                                        |
+| [[Lecture 12 - Inverses and Adjoints]]                        | [[Inverse]], [[Adjoint]],                                                                                  |
+| [[Lecture 13 - Fundamental Subspaces of a Linear Operator]]   | [[Range Space]], [[Null Space]], [[Rank]], [[Projection Operators]]                                        |
+| [[Lecture 14 - Pseudoinverses]]                               | [[Left Right Inverse]], [[Pseudoinverse]]                                                                  |
+| [[Lecture 15 - Ax=y Basic Ideas]]                             | [[Ax=y]]                                                                                                   |
+| [[Lecture 16 - Least Squares]]                                | [[Least Squares]], [[Weighted Least Squares]],                                                             |
+| [[Lecture 17 - Matrix Condition Number]]                      | [[Condition Number]]                                                                                       |
+| [[Lecture 18 - Matrix Factorization]]                         | [[LU Factorization]], [[Cholesky Factorization]], [[QR Factorization]]                                     |
+| [[Lecture 19 - Eigenanalysis Motivations]]                    | [[Eignevalues]], [[Eigenvectors]]                                                                          |
+| [[Lecture 20 - Eigenanalysis Properties and Transformations]] | [[Positive Definite]],                                                                                     |
+| [[Lecture 21 - Eigenanalysis - PCA]]                          | [[KL Transform]], [[PCA]]                                                                                  |
 

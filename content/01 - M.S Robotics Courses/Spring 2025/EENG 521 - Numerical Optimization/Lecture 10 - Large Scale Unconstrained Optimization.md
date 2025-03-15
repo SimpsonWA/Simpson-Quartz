@@ -6,7 +6,7 @@
 
 ## Inexact Newton's Method
 
-- Recall Newton's method:
+- Recall [[Newtons Method]]:
   $$
   p_k = - \left[ \nabla^2 f(x_k) \right]^{-1} \nabla f(x_k)
   $$

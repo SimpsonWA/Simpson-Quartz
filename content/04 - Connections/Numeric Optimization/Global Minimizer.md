@@ -3,3 +3,4 @@ A point $x^*$ in the domain of the objective function $f(x)$ such that $f(x^*) \
 
 Also if a function $f$ is [[Convex]] then any [[Local Minimizer]] $x^*$ is also a **global minimizer**.
 If $f$ is [[Convex]] and differentiable, any **stationary point** $x^*$ is a **global minimizer**.
+
