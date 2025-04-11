@@ -19,9 +19,10 @@ My goal is for this site to be a kind of "second brain" for me, and hopefully, a
 - [[CSCI 598 - Robotic SLAM]]
 - [[EENG 521 - Numerical Optimization]]
 - [[ROBO 565 - Advanced Robot Control ]]
+---
 
 # Personal Readings
-
+---
 ## Computer Science
 - [[The C++ Programming Language]]
 ## Computer Engineering
@@ -29,4 +30,19 @@ My goal is for this site to be a kind of "second brain" for me, and hopefully, a
 ## Robotics
 - [[Probabilistic Robotics]]
 - [[Planning Algorithms]]
+---
 
+# Personal Projects
+
+## Manim Videos
+
+- [[BFS Breadth-First Search]]
+- [[DFS Depth-First Search]]
+- [[Dijkstra's Algorithm]]
+- [[Genetic Algorithms]]
+
+## Computer Vision & Perception
+
+- [[Monocular Odometry - Simple]]
+
+## Misc:
