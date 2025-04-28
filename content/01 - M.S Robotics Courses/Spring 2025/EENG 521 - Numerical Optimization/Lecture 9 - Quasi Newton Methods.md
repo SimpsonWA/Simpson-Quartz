@@ -8,9 +8,8 @@ x_{n+1} = x_n - \frac{f'(x_n)(x_n - x_{n-1})}{f'(x_n) - f'(x_{n-1})}
 $$
 
 - We can interpret the Secant method as:
-
 $$
-x_{n+1} = x_n - \frac{f(x_n)}{\frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}}
+x_{n+1} = x_n - \frac{f'(x_n)}{\frac{f'(x_n) - f'(x_{n-1})}{x_n - x_{n-1}}}
 $$
 
 - The denominator is an approximation of $f'(x_k)$ (but is formed only using first order info). This is Newton-like, but the Secant method is called Quasi-Newton method.

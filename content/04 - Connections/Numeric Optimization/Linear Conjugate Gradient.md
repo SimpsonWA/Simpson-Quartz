@@ -73,3 +73,45 @@ $$
 Which is a momentum [[Gradient Descent]] algorithm where we have a tendency to continue in the previous direction $x_k - x_{k-1}$ but with a turn around toward $- \nabla \phi(x_k)$. This method is commonly refered to as a *heavy-ball method*
 
 # Conjugate Gradient Algorithm 
+
+### Naive Implemenation:
+
+```pseudo 
+\begin{algorithm}
+\caption{Conjugate Gradient - Naive}
+\begin{algorithmic}
+\State $r_0 = Ax_0 - b, p_0 = -r_0, k=0$
+\For{$k = 1,2,\dots$}
+	\State $\alpha_k = \frac{r_k^T p_k}{p_k^T A p_k}$
+	\State $x_{k+1} = x_k + \alpha_k p_k$
+	\State $r_{k+1} = A x_{k+1} - b$
+	\State $\beta_{k+1} = \frac{r_{k+1}^T A p_k}{p_k^T A p_k}$
+	\State $p_{k+1} = -r_{k+1} + \beta_{k+1}p_k$
+	\State $k \leftarrow k+1$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+```
+So in this algorithm we have 2 to 4 matrix vector products per iteration we can reduce this to 1 in the efficient algorithm 
+
+
+### Efficient Implementation 
+```pseudo 
+\begin{algorithm}
+\caption{Conjugate Gradient - Efficent}
+\begin{algorithmic}
+\State $r_0 = Ax_0 - b, p_0 = -r_0, k=0$
+\For{$k = 1,2,\dots$}
+	\State $w = A p_k$
+	\State $\alpha_k = \frac{r_k^T r_k}{p_k^T w}$
+	\State $x_{k+1} = x_k + \alpha_k p_k$
+	\State $r_{k+1} = r_k + \alpha_k w$
+	\State $\beta_{k+1} = \frac{r_{k+1}^T r_{k+1}}{r_k^T r_k}$
+	\State $p_{k+1} = -r_{k+1} + \beta_{k+1}p_k$
+	\State $k \leftarrow k+1$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+```

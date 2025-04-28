@@ -1,3 +1,12 @@
+# WIP
+
+Need to expand more 
+
+---
+
+**Idea:** In optimization, **line search methods** are iterative techniques used to find a [[Local Minimizer]] of a function by moving along carefully chosen directions. At each iteration, the method selects a direction to move and then determines how far to move along that direction. The effectiveness of line search methods hinges on two key decisions: choosing an appropriate search direction and determining a suitable step size.
+
+---
 
 Iteration of Line search methods:
 $$
