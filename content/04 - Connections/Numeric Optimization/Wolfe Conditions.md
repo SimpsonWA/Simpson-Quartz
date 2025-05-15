@@ -11,7 +11,7 @@ $$f(x_k + \alpha p_k) \leq f(x_k) + \alpha c_1 \nabla f(x_k)^T p_k \quad \text{f
 
 - Geometrically, this means the value $f(x_k + \alpha p_k)$ should lie below the linear approximation (or "Armijo line") of $f$ at $x_k$.
 
-![[SufficentDecrease.png]]
+![[content/04 - Connections/Numeric Optimization/001 - Images/SufficentDecrease.png]]
 
 ---
 ## Armijo Backtracking Algorithm: 

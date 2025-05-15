@@ -11,4 +11,4 @@ $$
 
 Since the algorithm moves in the direction of the negative gradient, it is also known as the **steepest descent algorithm**.
 
-![[GradientDescentFigure.png]]
+![[content/04 - Connections/Numeric Optimization/001 - Images/GradientDescentFigure.png]]
