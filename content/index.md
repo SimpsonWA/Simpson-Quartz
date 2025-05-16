@@ -19,7 +19,8 @@ My goal is for this site to be a kind of "second brain" for me, and hopefully a 
 - [[CSCI 598 - Robotic SLAM]]
 - [[EENG 521 - Numerical Optimization]]
 - [[ROBO 565 - Advanced Robot Control ]]
-
+# Misc
+- [[ROB530 - Mobile Robotics]]
 ---
 
 # Personal Readings
@@ -36,12 +37,14 @@ My goal is for this site to be a kind of "second brain" for me, and hopefully a 
 
 # Personal Projects
 
+## Computer Vision & Perception
+- [[Monocular Odometry - Simple]]
+## Controls
+
+- [[Kalman Filter Simulation]]
 ## Manim Videos
 - [[BFS Breadth-First Search]]
 - [[DFS Depth-First Search]]
 - [[Dijkstra's Algorithm]]
 - [[Genetic Algorithms]]
-
-## Computer Vision & Perception
-- [[Monocular Odometry - Simple]]
 
