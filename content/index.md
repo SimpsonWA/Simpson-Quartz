@@ -32,6 +32,8 @@ My goal is for this site to be a kind of "second brain" for me, and hopefully a 
 ## Robotics
 - [[Probabilistic Robotics]]
 - [[Planning Algorithms]]
+## Misc
+- [[Digital Signal Processing]]
 
 ---
 
@@ -44,7 +46,7 @@ My goal is for this site to be a kind of "second brain" for me, and hopefully a 
 - [[Kalman Filter Simulation]]
 ## Manim Videos
 - [[BFS Breadth-First Search]]
-- [[DFS Depth-First Search]]
-- [[Dijkstra's Algorithm]]
+- [[DFS Depth-First Search - Manim]]
+- [[Dijkstra's Algorithm - Manim]]
 - [[Genetic Algorithms]]
 
