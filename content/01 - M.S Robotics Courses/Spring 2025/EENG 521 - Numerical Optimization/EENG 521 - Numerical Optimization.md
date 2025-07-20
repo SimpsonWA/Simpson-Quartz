@@ -17,4 +17,4 @@
 | [[Lecture 16 - Point Methods for Linear Programmings]]               | [[Interior Point Method]], [[Central Path]], [[Newtons Method]]                                                               |
 | [[Lecture 17 - Quadratic Programming]]                               | [[Quadratic Programming]], [[KKT Conditions]], [[Primal - Dual]]                                                              |
 | [[Lecture 18 - Proximal Method]]                                     |                                                                                                                               |
-|                                                                      |                                                                                                                               |
+

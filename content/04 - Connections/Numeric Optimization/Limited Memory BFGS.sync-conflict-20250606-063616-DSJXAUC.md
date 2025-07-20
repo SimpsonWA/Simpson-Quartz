@@ -1,0 +1,1 @@
+**Idea**: [[BFGS]] is spatially inefficient ($O(n^2)$) especially if the[[Hessian]] is dense. For Limited memory BFGS we use a modified version of the hessian where we implicitly calculate the hessian thus allowing for lower memory usage. 

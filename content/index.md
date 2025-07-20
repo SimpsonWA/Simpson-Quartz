@@ -27,11 +27,14 @@ My goal is for this site to be a kind of "second brain" for me, and hopefully a 
 
 ## Computer Science
 - [[The C++ Programming Language]]
-## Computer Engineering
 - [[Computer Organization]]
 ## Robotics
 - [[Probabilistic Robotics]]
 - [[Planning Algorithms]]
+
+## Math
+- [[Graph Theory]]
+
 ## Misc
 - [[Digital Signal Processing]]
 
@@ -42,7 +45,6 @@ My goal is for this site to be a kind of "second brain" for me, and hopefully a 
 ## Computer Vision & Perception
 - [[Monocular Odometry - Simple]]
 ## Controls
-
 - [[Kalman Filter Simulation]]
 ## Manim Videos
 - [[BFS Breadth-First Search]]
